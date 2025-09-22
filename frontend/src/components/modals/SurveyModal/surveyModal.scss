@@ -1,0 +1,40 @@
+// 0905 파일 추가
+:root {
+  --ds-survey-modal-textarea-bg: var(--ds-general-color-white);
+  --ds-survey-modal-textarea-border-color: #c1c1c1;
+}
+[theme="dark"] {
+  --ds-survey-modal-textarea-bg: #141b26;
+  --ds-survey-modal-textarea-border-color: #142238;
+}
+.survey-modal {
+  &-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: calc(var(--ds-font-size-base) * 1.0625);
+  }
+  &-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+  }
+  &-star-button {
+    border: none;
+    background: transparent;
+  }
+  &-textarea {
+    // reset
+    resize: none;
+    width: 100%;
+    outline: none;
+
+    font-size: calc(var(--ds-font-size-base) * 0.9375);
+    padding: 15px 20px;
+    border-radius: 12px;
+    min-width: 22vw;
+    background-color: var(--ds-survey-modal-textarea-bg);
+    border: 1px solid var(--ds-survey-modal-textarea-border-color);
+    color: var(--ds-modal-content-inn-text-color);
+  }
+}

@@ -1,0 +1,66 @@
+// 파일업로드
+:root {
+  --ds-file-upload-modal-set-bg: #f4f4f4;
+  --ds-file-upload-modal-set-border-color: #dfdfdf;
+}
+[theme="dark"] {
+  --ds-file-upload-modal-set-bg: #272e39;
+  --ds-file-upload-modal-set-border-color: #343e4f;
+}
+.file-upload-modal {
+  .modal-content-inn {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+  }
+  &-area {
+    max-height: 385px;
+    overflow-y: auto;
+  }
+  &-set {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 13px;
+    background-color: var(--ds-file-upload-modal-set-bg);
+    border: 1px solid var(--ds-file-upload-modal-set-border-color);
+    border-radius: 10px;
+  }
+  &__icon {
+    background-color: #e8e8e8;
+    border-radius: 11px;
+    width: 39px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-file {
+    flex: 1;
+    margin: 0 17px;
+
+    &__size {
+      margin-top: 12px;
+      color: #ccc;
+    }
+  }
+  &__delete {
+    border: none;
+    width: 20px;
+    height: 20px;
+    background: var(--ds-color-black-2);
+    color: var(--ds-general-color-white);
+    justify-content: center;
+    border-radius: 50%;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  &-info {
+    font-size: calc(var(--ds-font-size-base) * 0.875);
+    padding-top: 4px;
+    padding-bottom: 8px;
+  }
+}

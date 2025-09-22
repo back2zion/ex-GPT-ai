@@ -1,0 +1,63 @@
+:root {
+  --ds-font-size-modal-button-bg: #f2f2f2;
+  --ds-font-size-modal-button-text-color: var(--ds-color-black-2);
+  --ds-font-size-modal-button-border-color: #d5d9e1;
+  --ds-font-size-modal-button-border-color-hover: #444;
+}
+[theme="dark"] {
+  --ds-font-size-modal-button-bg: #3d4859;
+  --ds-font-size-modal-button-text-color: var(--ds-general-color-white);
+  --ds-font-size-modal-button-border-color: #202733;
+  --ds-font-size-modal-button-border-color-hover: #259dff;
+}
+// 글자 크기
+.font-size-modal {
+  .modal-content-inn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    .font-size-button.ds-button {
+      width: 47px;
+      height: 47px;
+      border-radius: 50%;
+      background-color: var(--ds-font-size-modal-button-bg);
+      border: 1px solid var(--ds-font-size-modal-button-border-color);
+      color: var(--ds-font-size-modal-button-text-color);
+      justify-content: center;
+
+      &:hover {
+        border-color: var(--ds-font-size-modal-button-border-color-hover);
+      }
+
+      // nth-child 제거하고 jsx 에서 처리하는 게 추후 수정하기 편할 듯
+      &:nth-child(1) {
+        font-size: 13px;
+        font-weight: 500;
+      }
+      &:nth-child(2) {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      &:nth-child(3) {
+        font-size: 20px;
+        font-weight: 500;
+      }
+      &:nth-child(4) {
+        font-size: 25px;
+        font-weight: 600;
+      }
+      &:nth-child(5) {
+        font-size: 28px;
+        font-weight: 600;
+      }
+
+      &.active {
+        background-color: #e0f1ff;
+        border-color: #067ee1;
+        color: #067ee1;
+      }
+    }
+  }
+}

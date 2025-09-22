@@ -1,0 +1,342 @@
+// 0905 첨부파일 말줄임 추가, 모두 삭제 버튼 폰트사이즈 추가, 반응형 너비 스타일 추가
+:root {
+  // 첨부파일
+  --ds-attached-files-border-color: #e6e6e6;
+  --ds-attached-files-bg: transparent;
+
+  --ds-attached-file-header-title-text-color: var(--ds-color-black-2);
+
+  --ds-attached-file-header-border-color: #d7d7d78c;
+  --ds-attached-file-header-remove-all-bg: var(--ds-general-color-white);
+  --ds-attached-file-header-remove-all-bg-hover: var(--ds-general-color-white);
+  --ds-attached-file-header-remove-all-border-color: #d4d4d4;
+  --ds-attached-file-header-remove-all-border-color-hover: #444;
+  --ds-attached-file-header-remove-all-text-color: var(--ds-color-black-2);
+
+  --ds-attached-file-item-bg: #f4f4f4;
+  --ds-attached-file-item-border-color: #dfdfdf;
+  --ds-attached-file-name-text-color: var(--ds-color-black-2);
+
+  --ds-content-form-border-color: #e0e0e0;
+  --ds-content-form-bg: var(--ds-general-color-white);
+  --ds-content-form-box-shadow: 0px 0px 30px 0px #dae0ef;
+
+  --ds-content-form-box-boder-color-active: #067ee1;
+
+  --ds-content-form-textarea-text-color: var(--ds-color-black-2);
+  --ds-content-form-textarea-placeholder-text-color: #9f9f9f;
+
+  --ds-content-form-btn-border-color: #cccccc;
+
+  --ds-content-form-file-label-border-color: #edebeb;
+  --ds-content-form-file-label-bg: #edebeb;
+  --ds-content-form-file-label-bg-hover: #d4d4d4;
+  --ds-content-form-file-label-bg-icon: url(../../../assets/icons/form/fileIcon.svg);
+
+  --ds-content-form-submit-btn-text-color: var(--ds-general-color-white);
+  --ds-content-form-submit-btn-border-color: #c0c0c0;
+  --ds-content-form-submit-btn-bg: #cccccc;
+}
+[theme="dark"] {
+  // 첨부파일
+  --ds-attached-files-border-color: #2d2d2d;
+  --ds-attached-files-bg: #262b33;
+
+  --ds-attached-file-header-title-text-color: var(--ds-general-color-white);
+
+  --ds-attached-file-header-border-color: #4f4f4f;
+  --ds-attached-file-header-remove-all-border-color-hover: #939393;
+  --ds-attached-file-header-remove-all-bg: #454959;
+  --ds-attached-file-header-remove-all-bg-hover: #5c6072;
+  --ds-attached-file-header-remove-all-border-color: #1d1f2a;
+  --ds-attached-file-header-remove-all-text-color: var(
+    --ds-general-color-white
+  );
+
+  --ds-attached-file-item-bg: #171e2a;
+  --ds-attached-file-item-border-color: #151e2d;
+  --ds-attached-file-name-text-color: var(--ds-general-color-white);
+
+  --ds-content-form-border-color: #434343;
+  --ds-content-form-bg: transparent;
+  --ds-content-form-box-shadow: none;
+
+  --ds-content-form-box-boder-color-active: #067ee1;
+
+  --ds-content-form-textarea-text-color: var(--ds-general-color-white);
+  --ds-content-form-textarea-placeholder-text-color: var(
+    --ds-general-color-white
+  );
+
+  --ds-content-form-btn-border-color: #5959598c;
+
+  --ds-content-form-file-label-border-color: #a1a1a1;
+  --ds-content-form-file-label-bg: #1d232a;
+  --ds-content-form-file-label-bg-hover: #1d232a;
+  --ds-content-form-file-label-bg-icon: url(../../../assets/icons/form/fileIcon-dark.svg);
+
+  --ds-content-form-submit-btn-text-color: var(--ds-general-color-white);
+  --ds-content-form-submit-btn-border-color: #3d4256;
+  --ds-content-form-submit-btn-bg: #3d4256;
+}
+
+// 0905 추가
+.content__form_wrapper {
+  width: 100%;
+}
+
+// 전체 영역 감싸는 태그
+.content__form_section {
+  border: 1px solid var(--ds-content-form-border-color);
+  background-color: var(--ds-content-form-bg);
+  padding: 0.7em 1em 0.87em;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px 0px var(--ds-content-form-box-shadow);
+
+  &.active {
+    border-color: var(--ds-content-form-box-boder-color-active);
+    border-width: 1.5px;
+  }
+}
+
+// 첨부파일
+.attached-files {
+  border: 1px solid var(--ds-attached-files-border-color);
+  background-color: var(--ds-attached-files-bg);
+  border-radius: 10px;
+  padding: 5px 14px 6px;
+  width: 100%; // 0905 추가
+
+  .attached-file {
+    &-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      padding-bottom: 6px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid var(--ds-attached-file-header-border-color);
+
+      &-title {
+        font-size: calc(var(--ds-font-size-base) * 1.0625);
+        color: var(--ds-attached-file-header-title-text-color);
+      }
+
+      &-remove-all {
+        min-width: 69px;
+        font-size: 14px;
+        font-weight: 500;
+        background-color: var(--ds-attached-file-header-remove-all-bg);
+        border: 1px solid var(--ds-attached-file-header-remove-all-border-color);
+        color: var(--ds-attached-file-header-remove-all-text-color);
+        font-size: calc(var(--ds-font-size-base) * 0.875);
+        border-radius: 6px;
+        // 0905 height -> min-height 변경
+        min-height: 28px;
+        justify-content: center;
+        padding: 5px 8px;
+
+        &:hover {
+          border-color: var(
+            --ds-attached-file-header-remove-all-border-color-hover
+          );
+          background-color: var(--ds-attached-file-header-remove-all-bg-hover);
+        }
+      }
+    }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-height: 137px;
+      overflow-y: auto;
+      width: 100%; // 0905 추가
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      padding: 6px 8px 6px 10px;
+      background-color: var(--ds-attached-file-item-bg);
+      border: 1px solid var(--ds-attached-file-item-border-color);
+      border-radius: 10px;
+      max-width: 100%;
+      width: fit-content;
+    }
+    &-info {
+      display: flex;
+      align-items: center;
+      width: calc(100% - 18px);
+    }
+    &-icon {
+      width: 29px;
+      height: 29px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #e8e8e8;
+      border-radius: 8px;
+      margin-right: 5px;
+      flex-shrink: 0;
+    }
+    &-name {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color: var(--ds-attached-file-name-text-color);
+      // 0905 말줄임 추가
+      white-space: nowrap;
+      width: calc(100% - 50px);
+    }
+    &-size {
+      color: #727272;
+      margin: 0 9px 0 4px;
+      white-space: nowrap;
+    }
+    &-remove {
+      width: 20px;
+      height: 20px;
+      color: var(--ds-general-color-white);
+      background-color: var(--ds-color-black-2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: none;
+    }
+  }
+}
+
+// 검색
+.content__form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  // position: absolute;
+  // left: 0;
+  // right: 0;
+  // bottom: 4vh;
+  // margin: 0 2em;
+
+  .content__inner {
+    padding-top: 1em;
+  }
+
+  &-gliter-icon {
+    width: 23px;
+    position: absolute;
+    top: 16%;
+    left: 8px;
+  }
+
+  &-textarea {
+    // reset 공통
+    resize: none;
+    padding: 0;
+    border: none;
+    outline: none;
+
+    // height: 50px;
+    line-height: 1.3em;
+    width: 100%;
+    padding: 0.5em 0.65em 0.5em 2.2em; // 0905 수정
+    transition: height 0.15s;
+    max-height: 26vh;
+    font-size: calc(var(--ds-font-size-base) * 1.0625);
+    background: transparent;
+    color: var(--ds-content-form-textarea-text-color);
+    position: relative;
+
+    &::placeholder {
+      color: var(--ds-content-form-textarea-placeholder-text-color);
+      font-size: calc(var(--ds-font-size-base) * 0.875);
+      // font-size: 15px;
+      // white-space: nowrap;
+      // overflow: hidden;
+      // text-overflow: ellipsis;
+      // width: calc(100% - 50px);
+      // width: 98%;
+    }
+  }
+
+  // 버튼 전체 감싸는 태그
+  &_btn {
+    border-top: 1px solid var(--ds-content-form-btn-border-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    padding-top: 12px;
+  }
+
+  &-file-label {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ds-content-form-file-label-border-color);
+    background: var(--ds-content-form-file-label-bg-icon) center/18px no-repeat;
+    background-color: var(--ds-content-form-file-label-bg);
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      background-color: var(--ds-content-form-file-label-bg-hover);
+
+      .tooltip {
+        // display: block;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  .tooltip {
+    position: absolute;
+    background-color: var(--ds-color-black-2);
+    border: 1px solid var(--ds-color-black-1);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ds-general-color-white);
+    border-radius: 7px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.0784313725);
+    padding: 9px 10px;
+    white-space: nowrap;
+    bottom: calc(100% + 14px);
+    // display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+  }
+
+  &-submit.ds-button {
+    border: 1px solid var(--ds-content-form-submit-btn-border-color);
+    background: var(--ds-content-form-submit-btn-bg);
+    border-radius: 28px;
+    color: var(--ds-content-form-submit-btn-text-color);
+    /* 15px */
+    font-size: calc(var(--ds-font-size-base) * 0.9375);
+    height: 36px;
+    padding: 0 14px;
+    cursor: not-allowed;
+
+    // 활성화
+    &.active {
+      background-color: #067ee1;
+      border-color: #006dc7;
+      cursor: pointer;
+
+      .button-icon-svg {
+        path {
+          stroke: #0074d4;
+        }
+      }
+
+      &:hover {
+        background-color: #006fcb;
+        border-color: #0063b5;
+      }
+    }
+  }
+}

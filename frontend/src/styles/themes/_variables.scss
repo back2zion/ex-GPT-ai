@@ -1,0 +1,39 @@
+// 공통 변수 (색상, 폰트, z-index 등)
+@mixin ds-theme-common {
+  --ds-font-family-1: "Pretendard", "Noto Sans", sans-serif;
+}
+
+// 컬러가 많고 규칙적으로 바뀌지 않아, 컴포넌트 단위로 색상 관리
+@mixin ds-theme-colors {
+  // Main Colors
+  --ds-general-color-transparent: transparent;
+  --ds-general-color-white: #ffffff;
+
+  --ds-color-black: #000000;
+  --ds-color-black-2: #222222;
+
+  --ds-color-grey: #9fa7b8;
+  --ds-color-lines: #e0e4ec;
+  --ds-color-light: #f7f9fe;
+
+  // Status Colors
+  --ds-status-color-success-bg: #ebfbf6;
+  --ds-status-color-success-border: #ade0d0;
+  --ds-status-color-success-text-color: #039855;
+
+  --ds-status-color-failure-bg: #fdedee;
+  --ds-status-color-failure-border: #f4d0d3;
+  --ds-status-color-failure-text-color: #d92d20;
+
+  --ds-status-color-warning-bg: #fff9e9;
+  --ds-status-color-warning-border: #ebe3cf;
+  --ds-status-color-warning-text-color: #fec32d;
+}
+
+@mixin ds-default-variables {
+  // scroll
+  --ds-webkit-scrollbar-width: 7px;
+  --ds-webkit-scrollbar-height: 7px;
+  --ds-webkit-scrollbar-thumb-radius: 8px;
+  --ds-webkit-scrollbar-track-bg: var(--ds-general-color-transparent);
+}

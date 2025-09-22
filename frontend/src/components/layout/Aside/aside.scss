@@ -1,0 +1,680 @@
+:root {
+  --ds-aside-bg: var(--ds-general-color-white);
+  --ds-aside-bg-folded: #b1b4bd33;
+  --ds-aside-border-color: #e8edf6;
+  --ds-aside-border-color-folded: #d1daea;
+
+  --ds-aside-toggle-btn-bg: #f1f3f8;
+  --ds-aside-toggle-btn-border-color: #cbd1e8;
+  --ds-aside-toggle-btn-icon-color: var(--ds-color-black-2);
+
+  --ds-aside-toggle-btn-bg-hover: #c9d3ef;
+  --ds-aside-toggle-btn-border-color-hover: #9eafe0;
+
+  --ds-aside-logo-icon-color: #0068be;
+  --ds-aside-logo-text-color: #3d5fa8;
+  --ds-aside-logo-border-color: #dde0eb;
+
+  --ds-aside-logo-version-text-color: var(--ds-color-black-2);
+
+  --ds-aside-user-info-bg: #ebf0f482;
+  --ds-aside-user-info-name-text-color: #2f446d;
+  --ds-aside-user-info-version-text-color: #1068aa;
+
+  --ds-aside-new-chat-text-color: var(--ds-general-color-white);
+  --ds-aside-new-chat-bg: var(--ds-color-black-2);
+  --ds-aside-new-chat-box-shadow: 0px 4px 4px 0px #00000024;
+
+  --ds-aside-new-chat-bg-hover: #494949;
+
+  --ds-aside-delete-chat-text-color: var(--ds-color-black-2);
+  --ds-aside-delete-chat-icon-bg: #e1f0ff;
+  --ds-aside-delete-chat-icon-color: #0070df;
+  --ds-aside-delete-chat-after-line-color: #eeeeee;
+
+  --ds-aside-delete-chat-bg-hover: #f6f6f6;
+  --ds-aside-delete-chat-border-color-hover: #f4f4f4;
+
+  --ds-aside-gov-inspection-text-color: var(--ds-color-black-2);
+  --ds-aside-gov-inspection-icon-bg: #eeecf7;
+  --ds-aside-gov-inspection-icon-color: #7144c5;
+  --ds-aside-gov-inspection-after-line-color: #eeeeee;
+
+  --ds-aside-gov-inspection-bg-hover: #f6f6f6;
+  --ds-aside-gov-inspection-border-color-hover: #f4f4f4;
+
+  --ds-aside-arrow-icon-color: var(--ds-color-black-2);
+
+  --ds-aside-history-title-text-color: #727272;
+  --ds-aside-history-item-text-color: var(--ds-color-black-2);
+  --ds-aside-history-item-bg-hover: #0000000a;
+  --ds-aside-history-item-bg-active: #0000000f;
+
+  --ds-aside-user-dept-border-color: #e0e4e7;
+  --ds-aside-user-dept-text-color: var(--ds-color-black-2);
+
+  --ds-aside-folded-tooltip-text-color: var(--ds-general-color-white);
+  --ds-aside-folded-tooltip-bg: var(--ds-color-black-2);
+}
+[theme="dark"] {
+  --ds-aside-bg: #363a3e;
+  --ds-aside-bg-folded: #b1b4bd33;
+  --ds-aside-border-color: #303030;
+  --ds-aside-border-color-folded: #303030;
+
+  --ds-aside-toggle-btn-bg: #1a1f27;
+  --ds-aside-toggle-btn-border-color: #1a1f27;
+  --ds-aside-toggle-btn-icon-color: var(--ds-general-color-white);
+
+  --ds-aside-toggle-btn-bg-hover: #3d4859;
+  --ds-aside-toggle-btn-border-color-hover: #3d4859;
+
+  --ds-aside-logo-icon-color: var(--ds-general-color-white);
+  --ds-aside-logo-text-color: var(--ds-general-color-white);
+  --ds-aside-logo-border-color: #ccdaf536;
+
+  --ds-aside-logo-version-text-color: var(--ds-general-color-white);
+
+  --ds-aside-user-info-bg: #1c2026;
+  --ds-aside-user-info-name-text-color: var(--ds-general-color-white);
+  --ds-aside-user-info-version-text-color: #0095f2;
+
+  --ds-aside-new-chat-text-color: var(--ds-general-color-white);
+  --ds-aside-new-chat-bg: #424f64;
+  --ds-aside-new-chat-box-shadow: 0px 4px 4px 0px #00000024;
+
+  --ds-aside-new-chat-bg-hover: #586984;
+
+  --ds-aside-delete-chat-text-color: var(--ds-general-color-white);
+  --ds-aside-delete-chat-icon-bg: #1a1f27;
+  --ds-aside-delete-chat-icon-color: var(--ds-general-color-white);
+  --ds-aside-delete-chat-after-line-color: #455773;
+
+  --ds-aside-delete-chat-bg-hover: #373f4c;
+  --ds-aside-delete-chat-border-color-hover: #373f4c;
+
+  --ds-aside-gov-inspection-text-color: var(--ds-general-color-white);
+  --ds-aside-gov-inspection-icon-bg: #1a1f27;
+  --ds-aside-gov-inspection-icon-color: var(--ds-general-color-white);
+  --ds-aside-gov-inspection-after-line-color: #455773;
+
+  --ds-aside-gov-inspection-bg-hover: #373f4c;
+  --ds-aside-gov-inspection-border-color-hover: #373f4c;
+
+  --ds-aside-arrow-icon-color: var(--ds-general-color-white);
+
+  --ds-aside-history-title-text-color: #d9d9d9;
+  --ds-aside-history-item-text-color: var(--ds-general-color-white);
+  --ds-aside-history-item-bg-hover: #2b2b2ba3;
+  --ds-aside-history-item-bg-active: #181818a3;
+
+  --ds-aside-user-dept-border-color: #6d6e6f;
+  --ds-aside-user-dept-text-color: #ffffffd1;
+
+  --ds-aside-folded-tooltip-text-color: var(--ds-color-black-2);
+  --ds-aside-folded-tooltip-bg: var(--ds-general-color-white);
+}
+.aside.folded {
+  --ds-aside-folded-new-chat-icon: url(../../../assets/icons/aside/newChatIcon_folded_black.svg);
+  --ds-aside-folded-new-chat-icon-bg: var(--ds-general-color-white);
+
+  --ds-aside-folded-icon-bg-hover: var(--ds-color-black-2);
+
+  // 기존 변수: 닫혔을 때 보이는 아아콘 배경 및 색상 - 오버라이드
+  --ds-aside-delete-chat-icon-bg: var(--ds-general-color-white);
+  --ds-aside-delete-chat-icon-color: var(--ds-color-black-2);
+
+  --ds-aside-gov-inspection-icon-bg: var(--ds-general-color-white);
+  --ds-aside-gov-inspection-icon-color: var(--ds-color-black-2);
+
+  --ds-aside-delete-chat-after-line-color: transparent;
+  --ds-aside-gov-inspection-after-line-color: transparent;
+
+  // 0905 hover 관련 스타일 변수 추가
+  .aside__link__inner:hover {
+    --ds-aside-folded-new-chat-icon-bg: #cbd5e8;
+    --ds-aside-delete-chat-icon-bg: #cbd5e8;
+    --ds-aside-gov-inspection-icon-bg: #cbd5e8;
+  }
+}
+
+[theme="dark"] {
+  .aside.folded {
+    --ds-aside-folded-new-chat-icon: url(../../../assets/icons/aside/newChatIcon_folded_white.svg);
+    --ds-aside-folded-new-chat-icon-bg: #1a1f27;
+
+    --ds-aside-folded-icon-bg-hover: #3d4859;
+
+    // 기존 변수: 닫혔을 때 보이는 아아콘 배경 및 색상 - 오버라이드
+    --ds-aside-delete-chat-icon-bg: #1a1f27;
+    --ds-aside-delete-chat-icon-color: var(--ds-general-color-white);
+
+    --ds-aside-gov-inspection-icon-bg: #1a1f27;
+    --ds-aside-gov-inspection-icon-color: var(--ds-general-color-white);
+
+    // 0905 hover 관련 스타일 변수 추가
+    .aside__link__inner:hover {
+      --ds-aside-folded-new-chat-icon-bg: #3d4859;
+      --ds-aside-delete-chat-icon-bg: #3d4859;
+      --ds-aside-gov-inspection-icon-bg: #3d4859;
+    }
+  }
+}
+
+.aside {
+  width: 32%;
+  min-width: 136px;
+  max-width: 245px;
+  position: relative;
+  background-color: var(--ds-aside-bg);
+  border-right: 1px solid var(--ds-aside-border-color);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.45s;
+  // transition-delay: 0.2s;
+  // header height 만큼 강제로 올림
+  transform: translateY(-50px);
+  height: calc(100% + 50px);
+
+  &::before {
+    content: none;
+    position: absolute;
+    inset: 0;
+    background-color: var(--ds-general-color-white);
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    transition: opacity 0.2s;
+    z-index: 1;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100% - 50px);
+    flex: 1;
+  }
+
+  // 열/닫 버튼
+  &__toggle_btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--ds-aside-toggle-btn-icon-color);
+    border: 1px solid var(--ds-aside-toggle-btn-border-color);
+    background-color: var(--ds-aside-toggle-btn-bg);
+    flex-shrink: 0;
+    justify-content: center;
+
+    &:hover {
+      border: 1px solid var(--ds-aside-toggle-btn-border-color-hover);
+      background-color: var(--ds-aside-toggle-btn-bg-hover);
+    }
+  }
+
+  &__logo {
+    &-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      // gap: 24px;
+      font-size: inherit;
+      font-weight: inherit;
+      margin: 22px 23px 0 16px;
+    }
+    &-desc {
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+
+      a {
+        // reset
+        text-decoration: none;
+        color: var(--ds-color-black-2);
+        font-size: calc(var(--ds-font-size-base) * 0.8125);
+        padding-bottom: 7px;
+        border-bottom: 1px solid var(--ds-aside-logo-border-color);
+        color: var(--ds-aside-logo-icon-color);
+      }
+    }
+    &-version {
+      color: var(--ds-aside-logo-version-text-color);
+      font-weight: 600;
+    }
+    &-text {
+      font-size: calc(var(--ds-font-size-base) * 0.75);
+      padding-top: 6px;
+      color: var(--ds-aside-logo-text-color);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  &__link {
+    // reset
+    text-decoration: none;
+
+    display: inline-block;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    font-size: calc(var(--ds-font-size-base) * 0.9375);
+    white-space: nowrap;
+
+    &__inner {
+      display: flex;
+      align-items: center;
+      flex: 1;
+    }
+
+    &-arrow {
+      margin-right: 14px;
+      color: var(--ds-aside-arrow-icon-color);
+      flex-shrink: 0;
+    }
+
+    // 새 대화
+    &-new {
+      color: var(--ds-aside-new-chat-text-color);
+      background-color: var(--ds-aside-new-chat-bg);
+      box-shadow: var(--ds-aside-new-chat-box-shadow);
+      justify-content: center;
+      border-radius: 30px;
+      padding: 0;
+      margin-bottom: 20px;
+      min-height: 40px;
+      position: relative;
+      // transition: all 0.25s;
+
+      &:hover {
+        background-color: var(--ds-aside-new-chat-bg-hover);
+      }
+
+      .aside__link__inner {
+        justify-content: center;
+        gap: 11px;
+      }
+    }
+
+    // 대화 지우기
+    &-delete {
+      color: var(--ds-aside-delete-chat-text-color);
+      min-height: 30px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      gap: 9px;
+      border-radius: 8px;
+      position: relative;
+      border: 1px solid transparent;
+
+      // icon
+      .icon {
+        background-color: var(--ds-aside-delete-chat-icon-bg);
+        color: var(--ds-aside-delete-chat-icon-color);
+        padding: 5px;
+        border-radius: 8px;
+        margin-left: 6px;
+        line-height: 0;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        margin-right: 9px;
+      }
+
+      // text
+      .aside__link-text {
+        flex: 1;
+      }
+
+      &:hover {
+        background-color: var(--ds-aside-delete-chat-bg-hover);
+        border-color: var(--ds-aside-delete-chat-border-color-hover);
+      }
+
+      // 하위 구분선
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 8px);
+        border-bottom: 1px solid var(--ds-aside-delete-chat-after-line-color);
+      }
+    }
+
+    // 국정감사 전용 AI
+    &-gov {
+      color: var(--ds-aside-gov-inspection-text-color);
+      min-height: 30px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      gap: 9px;
+      border-radius: 8px;
+      position: relative;
+      margin-top: 10px;
+      border: 1px solid transparent;
+
+      .icon {
+        background-color: var(--ds-aside-gov-inspection-icon-bg);
+        color: var(--ds-aside-gov-inspection-icon-color);
+        padding: 5px;
+        border-radius: 8px;
+        margin-left: 6px;
+        line-height: 0;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        margin-right: 9px;
+      }
+
+      // text
+      .aside__link-text {
+        flex: 1;
+      }
+
+      &:hover {
+        background-color: var(--ds-aside-gov-inspection-bg-hover);
+        border-color: var(--ds-aside-gov-inspection-border-color-hover);
+      }
+
+      // 하위 구분선
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 8px);
+        border-bottom: 1px solid var(--ds-aside-gov-inspection-after-line-color);
+      }
+    }
+  }
+
+  // 사용자 프로필 이미지, 현재 버전 정보
+  .user-info {
+    display: flex;
+    gap: 0.69em;
+    //background-color: var(--ds-aside-user-info-bg);
+    margin: -15px 20px 20px;
+    border-radius: 10px;
+    padding: 14px;
+    transition: padding 0.2s, margin 0.2s;
+
+    &__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: opacity 0.25s;
+    }
+
+    &__name {
+      color: var(--ds-aside-user-info-name-text-color);
+      font-size: calc(var(--ds-font-size-base) * 0.9375);
+      font-weight: 600;
+    }
+
+    &__version {
+      color: var(--ds-aside-user-info-version-text-color);
+      font-size: calc(var(--ds-font-size-base) * 0.75);
+      white-space: nowrap;
+    }
+  }
+
+  // 예전 대화 기록
+  .history-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 20px 20px 0;
+
+    .history-title {
+      color: var(--ds-aside-history-title-text-color);
+      margin-bottom: 8px;
+      font-size: calc(var(--ds-font-size-base) * 0.9375);
+      padding-left: 10px;
+    }
+
+    .history-item {
+      // reset
+      text-decoration: none;
+
+      color: var(--ds-aside-history-item-text-color);
+      font-size: calc(var(--ds-font-size-base) * 0.875);
+      padding: 10px;
+      border-radius: 8px;
+      // 한줄 말줄임
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 6px;
+
+      &.active {
+        background-color: var(--ds-aside-history-item-bg-active);
+      }
+
+      &:hover {
+        background-color: var(--ds-aside-history-item-bg-hover);
+      }
+    }
+  }
+
+  // 계정정보
+  .user__dept {
+    display: flex;
+    padding: 1em 0;
+    margin: 0 1em;
+    border-top: 1px solid var(--ds-aside-user-dept-border-color);
+    color: var(--ds-aside-user-dept-text-color);
+    gap: 8px;
+
+    &-name {
+      font-weight: 500;
+      font-size: calc(var(--ds-font-size-base) * 0.9375);
+      padding-bottom: 2px;
+    }
+
+    &-extension {
+      font-size: calc(var(--ds-font-size-base) * 0.8125);
+    }
+  }
+}
+
+// 닫혔을 시
+@mixin folded-aside {
+  width: 56px;
+  padding: 0;
+  min-width: 56px;
+  // overflow: hidden;
+  background-color: var(--ds-aside-bg-folded);
+  border-color: var(--ds-aside-border-color-folded);
+
+  .aside__inner {
+    overflow-y: initial;
+    overflow-x: initial;
+  }
+
+  .aside__logo {
+    &-meta {
+      margin-left: 0;
+      margin-right: 0;
+      justify-content: center;
+    }
+
+    &-desc {
+      position: absolute;
+      left: calc(100% + 20px);
+      top: 15px;
+    }
+  }
+
+  .user-info {
+    margin: 0;
+    background-color: transparent;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    display: block;
+
+    &__profile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__meta {
+      // display: none;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+  }
+
+  .aside__list {
+    gap: 34px;
+
+    .aside__link__inner {
+      justify-content: center;
+    }
+
+    .aside__link {
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      background-color: transparent;
+      border-color: transparent;
+      min-height: auto;
+
+      .icon {
+        margin: 0;
+      }
+
+      &-text {
+        display: none;
+        position: absolute;
+        left: calc(100% - 4px);
+        white-space: nowrap;
+        background: #222222;
+        z-index: 10;
+        color: var(--ds-general-color-white);
+        box-shadow: 0px 4px 8px 0px #00000014;
+        font-size: 13px;
+        font-weight: 600;
+        min-height: 31px;
+        line-height: 31px;
+        border-radius: 8px;
+        padding: 0 10px;
+        // opacity: 0;
+        // pointer-events: none; // hover 이벤트 먹히지 않게
+        // transition: opacity 0.2s;
+      }
+
+      .aside__link-arrow {
+        display: none;
+      }
+
+      // 새 채팅
+      &-new {
+        background-color: transparent;
+        box-shadow: none;
+
+        .icon {
+          padding: 5px;
+          border-radius: 8px;
+          margin-left: 6px;
+          line-height: 0;
+          width: 30px;
+          height: 30px;
+          display: inline-block;
+          margin-right: 9px;
+          background: var(--ds-aside-folded-new-chat-icon-bg);
+          position: relative;
+
+          // 0905 icon 하위에 before 로 수정
+          &:before {
+            content: "";
+            position: absolute;
+            background: var(--ds-aside-folded-new-chat-icon) center/cover
+              no-repeat;
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        svg {
+          display: none;
+        }
+      }
+
+      // 호버
+      .aside__link__inner {
+        &:hover {
+          .aside__link-text {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  // 이전 대화 기록
+  .history-list {
+    display: none;
+  }
+
+  // 부서
+  .user__dept {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+
+    &-details {
+      display: none;
+    }
+  }
+}
+
+.aside.folded {
+  &::before {
+    z-index: -1;
+    background-color: #b1b4bd33;
+    // transition: none;
+    opacity: 1;
+    visibility: visible;
+  }
+  @include folded-aside;
+}
+
+@media (max-width: 768px) {
+  .aside {
+    position: fixed;
+    bottom: 0;
+    top: 50px;
+    z-index: 10;
+    width: 75%;
+    height: 100vh;
+
+    & ~ .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      display: block;
+      backdrop-filter: blur(4px);
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .aside__logo-desc a {
+    svg {
+      width: 100px;
+    }
+  }
+}

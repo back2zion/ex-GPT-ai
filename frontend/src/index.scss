@@ -1,0 +1,26 @@
+// theme
+@use "./styles/themes/loader";
+// default
+@use "./styles/default/default";
+@use "./styles/default/font";
+
+// common components
+@use "./components/common/Modal/modal"; // 기본 모달
+@use "./components/common/toast/toast.scss"; // 토스트
+
+// layout components --> 해당 컴포넌트 import 로 변경 후 삭제
+@use "./components/layout/Header/header"; // 헤더
+@use "./components/layout/Aside/aside"; // 왼쪽 메뉴
+@use "./components/content/styles/index.scss"; // 콘텐츠 영역 공통 스타일
+
+// components --> 해당 컴포넌트 import 로 변경 후 삭제
+@use "./components/content/Form/form";
+@use "./components/content/Intro/Intro";
+@use "./components/content/Messages/messages";
+// @use "./components/content/Suggests/suggests"; // 0905 해당 컴포넌트에서 import
+
+// modals components style --> 해당 컴포넌트 import 로 변경 후 삭제
+@use "./components/modals/ErrorSubmitModal/errorSubmitModal";
+@use "./components/modals/FileUploadModal/fileUploadModal";
+@use "./components/modals/FontSizeModal/FontSizeModal";
+@use "./components/modals/GuideModal/guideModal";

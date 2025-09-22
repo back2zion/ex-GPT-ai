@@ -1,0 +1,78 @@
+// 사용법 안내
+:root {
+  --ds-guide-modal-dot-bg: var(--ds-color-black-2);
+}
+[theme="dark"] {
+  --ds-guide-modal-dot-bg: var(--ds-general-color-white);
+}
+.guide-modal {
+  &-set {
+    margin-bottom: 18px;
+  }
+  &-title {
+    font-weight: 500;
+    font-size: calc(var(--ds-font-size-base) * 0.9375);
+    margin-bottom: 8px;
+  }
+  &-list {
+    // reset
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    font-size: calc(var(--ds-font-size-base) * 0.9375);
+    font-weight: 300;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+
+  // 기본 사용법
+  &-set:first-of-type {
+    li {
+      padding-left: 20px;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--ds-guide-modal-dot-bg);
+      }
+    }
+  }
+  // 주요 기능
+  &-set:nth-of-type(2) {
+    .icon-inn {
+      padding: 3.2px;
+      width: 23px;
+      height: 21px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #2c97ef;
+      border: 1px solid #0174d2;
+      color: white;
+      border-radius: 6px;
+    }
+  }
+  // 단축키
+  &-set:last-of-type {
+    em {
+      font-style: normal;
+      font-weight: 500;
+    }
+  }
+}

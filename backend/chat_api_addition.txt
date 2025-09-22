@@ -1,0 +1,79 @@
+"""
+채팅 요청/응답 모델 추가
+기존 schemas.py에 추가할 내용
+"""
+
+from typing import List, Optional, Dict, Any
+from pydantic import BaseModel, Field
+
+# 기존 import와 모델들은 유지...
+
+# 텍스트 채팅용 모델 추가
+class ChatMessage(BaseModel):
+    """채팅 메시지"""
+    role: str = Field(..., description="메시지 역할 (user/assistant)")
+    content: str = Field(..., description="메시지 내용")
+
+class ChatRequest(BaseModel):
+    """텍스트 채팅 요청"""
+    messages: List[ChatMessage] = Field(..., description="채팅 메시지 목록")
+    session_id: Optional[str] = Field(None, description="세션 ID")
+    user_id: Optional[str] = Field(None, description="사용자 ID")
+    temperature: float = Field(default=0.7, description="생성 온도")
+    max_tokens: int = Field(default=1000, description="최대 토큰 수")
+    stream: bool = Field(default=False, description="스트리밍 여부")
+
+class ChatResponse(BaseModel):
+    """텍스트 채팅 응답 (MultimodalChatResponse와 통합)"""
+    success: bool = Field(..., description="성공 여부")
+    response: str = Field(..., description="AI 응답")
+    session_id: Optional[str] = Field(None, description="세션 ID")
+    message_id: Optional[str] = Field(None, description="메시지 ID")
+    sources: Optional[List[Dict[str, Any]]] = Field(None, description="참고 자료")
+    suggested_questions: Optional[List[str]] = Field(None, description="추천 질문")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="메타데이터")
+    error: Optional[str] = Field(None, description="오류 메시지")
+
+# 추가 텍스트 채팅 API 엔드포인트 (main.py에 추가)
+"""
+# main.py의 API 엔드포인트 섹션에 추가:
+
+from app.models.schemas import ChatRequest, ChatResponse
+
+@app.post("/api/v1/chat", response_model=ChatResponse)
+async def text_chat(
+    request: ChatRequest,
+    service: MultimodalChatService = Depends(get_multimodal_chat_service)
+):
+    \"\"\"텍스트 채팅 API (MCP 호환)\"\"\"
+    try:
+        logger.info(f"텍스트 채팅 요청 - 메시지 수: {len(request.messages)}")
+        
+        # 메시지 형식 변환
+        messages = []
+        for msg in request.messages:
+            messages.append({
+                "role": msg.role,
+                "content": msg.content
+            })
+        
+        # ChatResponse 형식으로 응답
+        response = await service.process_chat(
+            messages=messages,
+            session_id=request.session_id,
+            user_id=request.user_id,
+            temperature=request.temperature,
+            max_tokens=request.max_tokens,
+            multimodal=False
+        )
+        
+        return response
+        
+    except Exception as e:
+        logger.error(f"텍스트 채팅 실패: {e}")
+        return ChatResponse(
+            success=False,
+            response="죄송합니다. 채팅 처리 중 오류가 발생했습니다.",
+            error=str(e)
+        )
+"""

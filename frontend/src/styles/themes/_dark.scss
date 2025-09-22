@@ -1,0 +1,9 @@
+// --ds-main-surface-primary: var(--ds-general-color-black);
+
+@mixin ds-dark-theme-colors {
+  // bg
+  --ds-main-surface-primary: var(--ds-general-color-black);
+  // text
+  --ds-main-text-primary: var(--ds-color-black);
+  // button
+}

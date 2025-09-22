@@ -1,0 +1,81 @@
+/* 폼 헤더 및 검색 히스토리 위젯 스타일 */
+.content__form_section {
+  .form-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0 12px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--ds-color-border);
+    
+    .search-history-widget {
+      .search-history-toggle {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        
+        svg {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      
+      .search-history-panel {
+        right: 0;
+        left: auto;
+        min-width: 300px;
+        max-width: 400px;
+      }
+    }
+  }
+}
+
+/* 폼 전체 컨테이너 개선 */
+.content__form {
+  position: relative;
+  
+  .form-header + label {
+    margin-top: 8px;
+  }
+}
+
+/* 반응형: 모바일에서 히스토리 위젯 조정 */
+@media (max-width: 768px) {
+  .content__form_section .form-header {
+    justify-content: center;
+    
+    .search-history-widget .search-history-panel {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+      min-width: 280px;
+      max-width: calc(100vw - 40px);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .content__form_section .form-header {
+    padding: 0 0 8px 0;
+    
+    .search-history-widget {
+      .search-history-toggle {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        
+        svg {
+          width: 12px;
+          height: 12px;
+        }
+        
+        .history-count {
+          font-size: 0.6rem;
+          min-width: 14px;
+          height: 14px;
+        }
+      }
+      
+      .search-history-panel {
+        min-width: 260px;
+      }
+    }
+  }
+}

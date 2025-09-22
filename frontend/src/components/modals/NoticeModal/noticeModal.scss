@@ -1,0 +1,44 @@
+// 0905 파일 추가
+:root {
+  --ds-notice-modal-detail-bg: #eaeaea;
+  --ds-notice-modal-item-border-color: #e3e3e3;
+}
+[theme="dark"] {
+  --ds-notice-modal-detail-bg: #13131d;
+  --ds-notice-modal-item-border-color: #626d80;
+}
+.notice-modal {
+  &-item {
+    padding-bottom: 10px;
+    font-size: calc(var(--ds-font-size-base) * 0.9375);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--ds-notice-modal-item-border-color);
+    }
+    &:not(:first-child) {
+      padding-top: 10px;
+    }
+  }
+  &-title {
+    display: flex;
+    gap: 10px;
+
+    &-text {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    &-date {
+      font-size: calc(var(--ds-font-size-base) * 0.875);
+      font-weight: 300;
+    }
+  }
+  &-detail {
+    padding: 15px;
+    background-color: var(--ds-notice-modal-detail-bg);
+    border-radius: 8px;
+    margin-top: 12px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+}

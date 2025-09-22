@@ -1,0 +1,387 @@
+:root {
+  --ds-message-title-text-color: var(--ds-color-black-2);
+  --ds-message-title-date-text-color: #3a5182;
+  --ds-message-title-separate-line-color: #c9d1e1d1;
+
+  --ds-message-assistant-bg: var(--ds-general-color-white);
+  --ds-message-assistant-border-color: #c2ceea;
+  --ds-message-assistant-text-color: var(--ds-color-black-2);
+
+  --ds-message-error-button-border-color: #d4dcf1;
+  --ds-message-error-button-border-color-hover: #8ea5e4;
+
+  --ds-message-content-button-bg: var(--ds-general-color-white);
+  --ds-message-content-button-border-color: #d4d4d4;
+
+  --ds-message-content-button-bg-hover: var(--ds-general-color-white);
+  --ds-message-content-button-border-color-hover: #444444;
+
+  // 답변
+  --ds-response-content-header-title-icon-color: var(--ds-color-black-2);
+  --ds-response-content-header-border-color: var(--ds-color-black-2);
+
+  --ds-response-content-table-th-bg: #f1f5fb;
+  --ds-response-content-table-th-border-top-bottom-color: #c5cde0;
+  --ds-response-content-table-td-border-color: #c5cde0;
+  --ds-response-content-table-td-bg: var(--ds-general-color-white);
+  --ds-response-content-table-th-td-border-left-color: transparent;
+
+  --ds-message-assistant-response-bg: #f1f5ffd9;
+
+  --ds-message-assistant-response-relevance-score-text-color: #444;
+}
+[theme="dark"] {
+  --ds-message-title-text-color: var(--ds-general-color-white);
+  --ds-message-title-date-text-color: var(--ds-general-color-white);
+  --ds-message-title-separate-line-color: #ccdaf536;
+
+  --ds-message-assistant-bg: #272e37;
+  --ds-message-assistant-border-color: #393939;
+  --ds-message-assistant-text-color: var(--ds-general-color-white);
+
+  --ds-message-error-button-border-color: #585858;
+  --ds-message-error-button-border-color-hover: var(--ds-general-color-white);
+
+  --ds-message-content-button-bg: #424f64;
+  --ds-message-content-button-border-color: #25292f;
+
+  --ds-message-content-button-bg-hover: #586984;
+  --ds-message-content-button-border-color-hover: #25292f;
+
+  // 답변
+  --ds-response-content-header-title-icon-color: #999;
+  --ds-response-content-header-border-color: #ccdaf536;
+
+  --ds-response-content-table-th-bg: #393c40;
+  --ds-response-content-table-th-border-top-bottom-color: #393c40;
+  --ds-response-content-table-td-border-color: #ccdaf536;
+  --ds-response-content-table-td-bg: transparent;
+  --ds-response-content-table-th-td-border-left-color: transparent;
+
+  --ds-message-assistant-response-bg: #272e37;
+
+  --ds-message-assistant-response-relevance-score-text-color: #999;
+}
+.message {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 2em;
+  // assistant, user
+
+  &__content {
+    padding: 20px;
+    font-weight: 500;
+    // 컨텐츠 별로 커져야하는 지 확인하기
+    font-size: calc(var(--ds-font-size-base) * 0.9375);
+    max-width: 76%;
+  }
+
+  // 메시지 타이틀
+  &-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    margin-bottom: 2.5em;
+
+    // 타이틀 양측 구분선
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      border-top: 1px solid var(--ds-message-title-separate-line-color);
+      width: 35%;
+      position: absolute;
+      bottom: 8px;
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+    }
+
+    &-text {
+      margin: 0;
+      color: var(--ds-message-title-text-color);
+      /* 18px */
+      font-size: calc(var(--ds-font-size-base) * 1.125);
+    }
+
+    &-date {
+      color: var(--ds-message-title-date-text-color);
+      font-weight: 300;
+      /* 15px */
+      font-size: calc(var(--ds-font-size-base) * 0.9375);
+    }
+  }
+
+  &.message--assistant {
+    .message__content {
+      // 0905 기존 스타일 삭제 및 추가
+      // background-color: var(--ds-message-assistant-bg);
+      // border: 1px solid var(--ds-message-assistant-border-color);
+      // color: var(--ds-message-assistant-text-color);
+      // border-radius: 0px 19px 19px 19px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0;
+
+      // 0905 메시지 컨텐츠 스타일 추가 : 309번 라인까지
+      &_box {
+        padding: 20px 25px;
+        background-color: var(--ds-message-assistant-bg);
+        border: 1px solid var(--ds-message-assistant-border-color);
+        color: var(--ds-message-assistant-text-color);
+        border-radius: 0px 19px 19px 19px;
+      }
+
+      // 상세보기, 다운로드 버튼
+      &_button {
+        background-color: var(--ds-message-content-button-bg);
+        border: 1px solid var(--ds-message-content-button-border-color);
+        color: var(--ds-message-assistant-text-color);
+        min-height: 28px;
+        border-radius: 6px;
+        padding: 4px 10px;
+        /* 14px */
+        font-size: calc(var(--ds-font-size-base) * 0.875);
+        text-decoration: none;
+        font-weight: 400;
+
+        &:not(:last-child) {
+          margin-right: 6px;
+        }
+
+        &:hover {
+          background-color: var(--ds-message-content-button-bg-hover);
+          border-color: var(--ds-message-content-button-border-color-hover);
+        }
+      }
+
+      // 메시지 타이틀
+      &_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--ds-response-content-header-border-color);
+
+        &_title {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-weight: 600;
+          font-size: calc(var(--ds-font-size-base) * 1.0625);
+        }
+
+        .icon {
+          line-height: 0;
+          color: var(--ds-response-content-header-title-icon-color);
+        }
+      }
+
+      // 기본 태그들 reset
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        th,
+        td {
+          height: 40px;
+          padding: 4px 15px;
+          background-color: var(--ds-response-content-table-td-bg);
+          &:not(:first-child) {
+            border-left: 1px solid
+              var(--ds-response-content-table-th-td-border-left-color);
+          }
+        }
+        th {
+          background-color: var(--ds-response-content-table-th-bg);
+          border-top: 1px solid
+            var(--ds-response-content-table-th-border-top-bottom-color);
+          border-bottom: 1px solid
+            var(--ds-response-content-table-th-border-top-bottom-color);
+        }
+        td {
+          font-weight: 400;
+          border-bottom: 1px solid
+            var(--ds-response-content-table-td-border-color);
+        }
+      }
+      strong {
+        font-weight: 600;
+      }
+      ul {
+        padding-inline-start: 1.2em;
+        li {
+          padding-top: 2px;
+          padding-bottom: 7px;
+        }
+      }
+
+      // 추론
+      .thinking-container {
+        .message__content_header {
+          border-bottom: none;
+        }
+        // 열/닫 버튼
+        .thinking-toggle-btn {
+          background-color: transparent;
+          font-size: calc(var(--ds-font-size-base) * 0.9375);
+          color: #0083f8;
+          border: none;
+          svg {
+            transition: 0.1s;
+          }
+
+          &.rotate {
+            svg {
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        .thinking-content {
+          height: 0;
+          opacity: 0;
+          visibility: hidden;
+          overflow: hidden;
+          line-height: 1.3;
+
+          &.active {
+            height: auto;
+            opacity: 1;
+            visibility: visible;
+            overflow: auto;
+            border-top: 1px solid var(--ds-response-content-header-border-color);
+          }
+        }
+      }
+
+      // 답변
+      .response-content {
+        background-color: var(--ds-message-assistant-response-bg);
+
+        p:not(.button-inner) {
+          margin-block-start: 0.75em;
+          margin-block-end: 0.5em;
+        }
+      }
+
+      // 근거
+      .source-documents {
+        padding-bottom: 0;
+        h1 {
+          font-size: 1.3em;
+        }
+        p:not(.button-inner) {
+          margin-block-start: 0.85em;
+          margin-block-end: 0.5em;
+        }
+        .relevance-score {
+          margin-right: 10px;
+          color: var(
+            --ds-message-assistant-response-relevance-score-text-color
+          );
+        }
+        .source-toggle-button {
+          svg {
+            transition: 0.1s;
+          }
+          &.rotate {
+            svg {
+              transform: rotate(180deg);
+            }
+          }
+        }
+        &-preview {
+          display: none;
+
+          &.active {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &.message--user {
+    justify-content: end;
+    .message__content {
+      background-color: #429ff3;
+      border: 1px solid #429ff3;
+      color: var(--ds-general-color-white);
+      border-radius: 19px 0 19px 19px;
+    }
+  }
+
+  // 오류신고버튼
+  &__error {
+    &__button {
+      position: relative;
+      align-self: flex-end;
+    }
+    &__icon {
+      border: 1px solid var(--ds-message-error-button-border-color);
+      border-radius: 50%;
+      background-color: transparent;
+      color: var(--ds-message-assistant-text-color);
+
+      &:hover {
+        border-color: var(--ds-message-error-button-border-color-hover);
+
+        ~ .message__error__tooltip {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+    &__tooltip {
+      position: absolute;
+      white-space: nowrap;
+      bottom: calc(100% + 14px);
+      background-color: #464646;
+      color: var(--ds-general-color-white);
+      left: 0;
+      padding: 4px 12px;
+      // 0905 font-size 변경
+      font-size: 13px;
+      border-radius: 14px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.1s;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 15%;
+        border-width: 6px;
+        border-style: solid;
+        border-color: #464646 transparent transparent transparent;
+      }
+    }
+  }
+}
+// 0905 추가
+@media (max-width: 970px) {
+  .message__error__tooltip {
+    white-space: initial;
+  }
+}
+
+@media (max-width: 930px) {
+  .message__error__tooltip {
+    font-size: 13px;
+  }
+}
+@media (max-width: 540px) {
+  .message__content {
+    max-width: 54%;
+  }
+}

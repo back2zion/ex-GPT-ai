@@ -1,0 +1,168 @@
+:root {
+  // primary
+  --ds-button-primary-bg: #067ee1;
+  --ds-button-primary-border-color: #0074d4;
+  --ds-button-primary-text: var(--ds-general-color-white);
+
+  --ds-button-primary-bg-hover: #006fcb;
+  --ds-button-primary-border-color-hover: #0063b5;
+
+  --ds-button-primary-bg-active: #006fcb;
+  --ds-button-primary-border-color-active: #0063b5;
+
+  // secondary
+  --ds-button-secondary-bg: #f4f4f4;
+  --ds-button-secondary-border-color: #cccccc;
+  --ds-button-secondary-text: #9b9ca1;
+
+  --ds-button-secondary-bg-hover: #e6e6e6;
+  --ds-button-secondary-border-color-hover: #cccccc;
+
+  --ds-button-secondary-bg-active: #e6e6e6;
+  --ds-button-secondary-border-color-active: #cccccc;
+}
+// 0905 다크모드 색상 추가
+[theme="dark"] {
+  --ds-button-secondary-bg: #454959;
+  --ds-button-secondary-border-color: #454959;
+  --ds-button-secondary-text: var(--ds-general-color-white);
+
+  --ds-button-secondary-bg-hover: #5c6072;
+  --ds-button-secondary-border-color-hover: #5c6072;
+
+  --ds-button-secondary-bg-active: #5c6072;
+  --ds-button-secondary-border-color-active: #5c6072;
+}
+.ds-button {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  user-select: none;
+  transition: 0.15s;
+  padding: 0;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  .button-inner {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  .button-label {
+    white-space: nowrap;
+  }
+
+  // 아이콘 + 텍스트
+  &:has(svg):has(span) {
+    .button-inner {
+      gap: 6px;
+    }
+  }
+
+  // 텍스트
+  &:not(:has(svg)):has(span) {
+    justify-content: center;
+  }
+}
+
+/* buttonSize */
+// .btn-size-xs {
+//     height: 26px;
+//     line-height: 26px;
+//     padding: 0 8px;
+//     font-size: 13px;
+//     font-weight: 400;
+//     min-width: 47px;
+
+//     &:not(:has(svg)) {
+//         justify-content: center;
+//     }
+
+//     &:has(svg):has(span) {
+//         .button-inner{
+//             gap: 3px;
+//         }
+//     }
+// }
+
+// .btn-size-s {
+//     height: 29px;
+//     line-height: 29px;
+//     padding: 0 8px;
+//     font-size: 13px;
+//     font-weight: 400;
+
+//     &:has(svg):has(span) {
+//         .button-inner{
+//             gap: 4px;
+//         }
+//     }
+// }
+
+// .btn-size-m {
+//     height: 30px;
+//     line-height: 30px;
+//     padding: 0 10px;
+//     font-size: 14px;
+//     font-weight: 400;
+
+//     &:has(svg):not(:has(span)) {
+//         padding: 0 7px;
+//         flex-shrink: 0;
+//     }
+
+//     &:not(:has(svg)) {
+//         min-width: 57px;
+//         justify-content: center;
+//     }
+
+//     &:has(svg):has(span) {
+//         .button-inner{
+//             gap: 4px;
+//         }
+//     }
+// }
+
+/* buttonType */
+.ds-button {
+  &.primary {
+    background-color: var(--ds-button-primary-bg);
+    border: 1px solid var(--ds-button-primary-border-color);
+    color: var(--ds-button-primary-text);
+
+    &:not([disabled]):hover {
+      background-color: var(--ds-button-primary-bg-hover);
+      border-color: var(--ds-button-primary-border-color-hover);
+    }
+    &:not([disabled]):active {
+      background-color: var(--ds-button-primary-bg-active);
+      border-color: var(--ds-button-primary-border-color-active);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--ds-button-secondary-bg);
+    border: 1px solid var(--ds-button-secondary-border-color);
+    color: var(--ds-button-secondary-text);
+
+    &:not([disabled]):hover {
+      background-color: var(--ds-button-secondary-bg-hover);
+      border-color: var(--ds-button-secondary-border-color-hover);
+    }
+    &:not([disabled]):active {
+      background-color: var(--ds-button-secondary-bg-active);
+      border-color: var(--ds-button-secondary-border-color-active);
+    }
+  }
+
+  &[disabled] {
+    background-color: var(--ds-button-disabled-bg);
+    border: 1px solid var(--ds-button-disabled-border-color);
+    color: var(--ds-button-disabled-text);
+  }
+}

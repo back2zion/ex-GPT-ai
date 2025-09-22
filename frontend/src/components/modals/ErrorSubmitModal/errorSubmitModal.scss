@@ -1,0 +1,60 @@
+// 오류사항신고
+:root {
+  --ds-error-submit-modal-option-border-color: #efefef;
+  --ds-error-submit-modal-option-bg: transparent;
+  --ds-error-submit-modal-option-bg-hover: #c5ddf1;
+
+  --ds-error-submit-modal-textarea-border-color: #c1c1c1;
+  --ds-error-submit-modal-textarea-bg: var(--ds-general-color-white);
+  --ds-error-submit-modal-textarea-border-color-focus: var(--ds-color-black-2);
+}
+[theme="dark"] {
+  --ds-error-submit-modal-option-border-color: #1f2329;
+  --ds-error-submit-modal-option-bg: #1f2329;
+  --ds-error-submit-modal-option-bg-hover: #383839;
+
+  --ds-error-submit-modal-textarea-border-color: #142238;
+  --ds-error-submit-modal-textarea-bg: #141b26;
+  --ds-error-submit-modal-textarea-border-color-focus: #697aa1;
+}
+.error-submit-modal {
+  &-title {
+    font-size: calc(var(--ds-font-size-base) * 1.0625);
+    text-align: center;
+    line-height: 1.3;
+  }
+  &-select {
+    border: 1px solid var(--ds-error-submit-modal-option-border-color);
+    background-color: var(--ds-error-submit-modal-option-bg);
+
+    &__option {
+      font-size: var(--ds-font-size-base);
+      padding: 10px 16px;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid
+          var(--ds-error-submit-modal-option-border-color);
+      }
+
+      &:hover {
+        background-color: var(--ds-error-submit-modal-option-bg-hover);
+      }
+    }
+  }
+  &-textarea {
+    resize: none;
+    width: 100%;
+    outline: none;
+
+    margin-top: 16px;
+    border: 1px solid var(--ds-error-submit-modal-textarea-border-color);
+    padding: 15px 20px;
+    border-radius: 12px;
+    background-color: var(--ds-error-submit-modal-textarea-bg);
+
+    &:focus-visible {
+      outline: 1px solid
+        var(--ds-error-submit-modal-textarea-border-color-focus);
+    }
+  }
+}

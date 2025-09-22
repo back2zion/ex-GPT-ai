@@ -1,0 +1,45 @@
+.content {
+  flex: 1;
+  height: 100%;
+  // overflow-y: auto;
+  position: relative;
+  padding-bottom: 4vh;
+  width: 100%;
+
+  &.content--layout {
+    display: flex;
+    flex-direction: column;
+    padding-top: 29px;
+  }
+
+  &__inner {
+    height: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2em 2em 0;
+  }
+
+  // 검색 입력창 제외한 스크롤 가능한 부분
+  .top--scrollable {
+    padding-bottom: 4vh;
+    overflow-y: auto;
+    // overflow-x: hidden;
+  }
+}
+@media (max-width: 930px) {
+  .content {
+    &__inner {
+      padding: 2em 1em 0;
+    }
+  }
+}
+@media (max-width: 758px) {
+  .content {
+    padding-left: 56px;
+
+    &__inner {
+      padding: 2em 0.85em 0;
+    }
+  }
+}

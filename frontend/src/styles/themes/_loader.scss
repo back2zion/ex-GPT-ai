@@ -1,0 +1,17 @@
+@use "variables";
+@use "light";
+@use "dark";
+
+:root {
+  @include variables.ds-theme-common;
+  @include variables.ds-theme-colors;
+  @include variables.ds-default-variables;
+  @include light.ds-light-theme-colors;
+}
+
+html[theme="dark"] {
+  @include variables.ds-theme-common;
+  @include variables.ds-theme-colors;
+  @include variables.ds-default-variables;
+  @include dark.ds-dark-theme-colors;
+}

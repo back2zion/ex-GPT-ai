@@ -1,0 +1,87 @@
+// 0905 header__util-button font-size 변경, 미디어 쿼리 수정
+:root {
+  --ds-header-util-button-border-color: #edededfa;
+  --ds-header-util-button-bg: #f9fbff;
+  --ds-header-util-button-text-color: var(--ds-color-black-2);
+
+  --ds-header-util-button-border-color-hover: #444444;
+  --ds-header-util-button-bg-hover: var(--ds-general-color-white);
+  --ds-header-util-button-text-color-hover: var(--ds-color-black-2);
+}
+[theme="dark"] {
+  --ds-header-util-button-border-color: #3d4256;
+  --ds-header-util-button-bg: #3d4256;
+  --ds-header-util-button-text-color: var(--ds-general-color-white);
+
+  --ds-header-util-button-border-color-hover: #49535d;
+  --ds-header-util-button-bg-hover: #49535d;
+  --ds-header-util-button-text-color-hover: var(--ds-general-color-white);
+}
+.header {
+  height: 50px;
+  margin: 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1.5%;
+    // padding-left: 56px;
+  }
+
+  &__util {
+    &-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      justify-content: end;
+    }
+    &-button.ds-button {
+      min-height: 33px;
+      justify-content: center;
+      border: 1px solid var(--ds-header-util-button-border-color);
+      border-radius: 18px;
+      background-color: var(--ds-header-util-button-bg);
+      padding: 4px 13px;
+      color: var(--ds-header-util-button-text-color);
+      font-size: calc(var(--ds-font-size-base) * 0.875);
+
+      &:hover {
+        border-color: var(--ds-header-util-button-border-color-hover);
+        background-color: var(--ds-header-util-button-bg-hover);
+        color: var(--ds-header-util-button-text-color-hover);
+
+        svg path {
+          stroke: var(--ds-header-util-button-text-color-hover);
+        }
+      }
+
+      // 글자크기버튼
+      &.text-size:hover {
+        svg path {
+          stroke: inherit;
+          fill: var(--ds-header-util-button-text-color-hover);
+        }
+      }
+    }
+  }
+}
+// 0905 반응형 구간 변경
+@media (max-width: 950px) {
+  .header__util-button.ds-button {
+    .button-label {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .header__util-button.ds-button {
+    padding: 0 10px;
+
+    svg {
+      width: 18px;
+    }
+  }
+}

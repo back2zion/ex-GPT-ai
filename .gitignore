@@ -1,0 +1,77 @@
+# Windows 임시 파일
+~$*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Office 임시 파일
+~$*.docx
+~$*.doc
+~$*.xlsx
+~$*.xls
+~$*.pptx
+~$*.ppt
+
+# 시스템 파일
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE 파일
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 로그 파일
+*.log
+
+# 임시 파일
+*.tmp
+*.temp
+
+# 백업 파일
+*.bak
+*.backup
+*_backup.*
+
+# 복사본 파일
+* copy*
+*_copy*
+
+# 개인정보 관련 파일
+*password*
+*secret*
+*private*
+*개인정보*
+*비밀*
+
+# 압축 파일
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# 실행 파일
+*.exe
+*.msi
+*.dmg
+
+# 데이터베이스 파일
+*.db
+*.sqlite
+*.sqlite3
+
+# 환경 설정 파일
+.env
+.env.local
+.env.production admin/
+admin/
+admin/
+data/
+*.log
+*.tmp
+node_modules/
+.env

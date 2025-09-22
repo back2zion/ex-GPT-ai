@@ -1,0 +1,158 @@
+@forward "../themes/variables";
+// 0905 body min-width 변경, width 추가
+:root {
+  --ds-body-bg: #f8faff;
+
+  --ds-font-size-base: 1em;
+  --line-height-base: 1;
+  // 간격
+  --ds-spacing-base: 16px;
+  // 스크롤
+  --ds-webkit-scrollbar-thumb-bg: #e0e0e0;
+}
+[theme="dark"] {
+  --ds-body-bg: #1d232a;
+
+  --ds-font-size-base: 1em;
+  --line-height-base: 1;
+  // 간격
+  --ds-spacing-base: 16px;
+  // 스크롤
+  --ds-webkit-scrollbar-thumb-bg: #4d4d4d;
+}
+
+/* 기준 폰트 */
+.sample-font {
+  /* 12px */
+  font-size: calc(var(--ds-font-size-base) * 0.75);
+  /* 13px */
+  font-size: calc(var(--ds-font-size-base) * 0.8125);
+  /* 14px */
+  font-size: calc(var(--ds-font-size-base) * 0.875);
+  /* 15px */
+  font-size: calc(var(--ds-font-size-base) * 0.9375);
+  /* 16px */
+  font-size: var(--ds-font-size-base);
+  /* 17px */
+  font-size: calc(var(--ds-font-size-base) * 1.0625);
+  /* 18px */
+  font-size: calc(var(--ds-font-size-base) * 1.125);
+  /* 20px */
+  font-size: calc(var(--ds-font-size-base) * 1.25);
+  /* 22px */
+  font-size: calc(var(--ds-font-size-base) * 1.375);
+  /* 32px */
+  font-size: calc(var(--ds-font-size-base) * 2);
+  /* 58px */
+  font-size: calc(var(--ds-font-size-base) * 3.625);
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: hidden;
+  // color
+  color: var(--ds-main-text-primary);
+  background-color: var(--ds-body-bg);
+  // em
+  font-family: var(--ds-font-family-1);
+  // font-size: 1em;
+  font-size: var(--ds-font-size-base);
+  min-width: 430px;
+  width: 100%;
+}
+
+// scrollbar 속성 CSS 변수 지원이 불완전, fallback 없으면 안 보임
+* {
+  box-sizing: border-box;
+  font-family: var(--ds-font-family-1);
+
+  &::-webkit-scrollbar {
+    width: var(--ds-webkit-scrollbar-width, 7px);
+    height: var(--ds-webkit-scrollbar-height, 7px);
+  }
+  &::-webkit-scrollbar-track {
+    background-color: var(--ds-webkit-scrollbar-track-bg, transparent);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: var(--ds-webkit-scrollbar-thumb-radius, 8px);
+    background-color: var(--ds-webkit-scrollbar-thumb-bg, #e0e0e0);
+  }
+}
+
+/* flex */
+.flex-container:not([style*="display: none"]) {
+  display: flex !important;
+  flex-direction: column;
+
+  &.dir-row {
+    flex-direction: row;
+  }
+  &.dir-col {
+    flex-direction: column;
+  }
+}
+.flex {
+  &-none {
+    flex: none;
+  }
+  &-auto {
+    flex: 1 1 0px;
+    overflow: auto;
+  }
+  &-grow {
+    flex: 1 0 auto;
+  }
+  &-shrink {
+    flex: 1 0 auto;
+  }
+  &-1_5 {
+    flex: 1.5;
+  }
+  &-1 {
+    flex: 1;
+  }
+  &-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.flex-start {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    &.flex-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &.flex-end {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.app-container {
+  display: flex;
+  height: calc(100% - 50px);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
