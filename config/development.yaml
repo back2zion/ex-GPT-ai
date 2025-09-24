@@ -1,0 +1,101 @@
+# Development Environment Configuration
+environment: development
+debug: true
+
+# API Settings
+api:
+  host: 0.0.0.0
+  port: 8000
+  reload: true
+  workers: 1
+  cors:
+    allow_origins: ["*"]
+    allow_credentials: true
+
+# Model Settings
+models:
+  chat:
+    endpoint: http://localhost:8000/v1
+    name: Qwen3-32B
+    temperature: 0.7
+    max_tokens: 2048
+  embedding:
+    endpoint: http://localhost:8100/v1
+    name: Qwen3-Embedding-0.6B
+    batch_size: 32
+  rerank:
+    endpoint: http://localhost:8101/v1
+    name: bge-reranker-v2-m3
+  vlm:
+    name: Salesforce/blip-2-opt-2.7b
+    device: cuda
+  ocr:
+    engine: easyocr
+    languages: ["ko", "en"]
+
+# Database Settings
+database:
+  qdrant:
+    host: localhost
+    port: 6333
+    collection_prefix: ex_gpt_dev
+    vector_size: 768
+  postgres:
+    host: localhost
+    port: 5432
+    database: exgpt_dev
+    user: exgpt
+    password: exgpt123
+  redis:
+    host: localhost
+    port: 6379
+    db: 0
+
+# Storage Settings
+storage:
+  upload_dir: ./uploads
+  processed_dir: ./processed
+  temp_dir: ./temp
+  cache_dir: ./cache
+  backup_dir: ./backups
+  max_file_size: 104857600  # 100MB
+
+# Security Settings
+security:
+  enable_personal_info_detection: false  # Disabled for dev
+  enable_duplicate_check: true
+  enable_virus_scan: false
+  session_timeout: 7200  # 2 hours
+
+# Performance Settings
+performance:
+  batch_size: 16
+  max_workers: 2
+  gpu_memory_fraction: 0.8
+  cache_size: 500
+  enable_profiling: true
+
+# Logging
+logging:
+  level: DEBUG
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: logs/ex-gpt-dev.log
+  console: true
+
+# Features
+features:
+  enable_vlm: true
+  enable_rerank: true
+  enable_file_context: true
+  enable_async_processing: true
+
+# Korea Expressway Settings
+korea_expressway:
+  enable_damage_detection: true
+  enable_traffic_analysis: true
+  damage_threshold: 0.7
+  priority_levels:
+    - 긴급
+    - 높음
+    - 보통
+    - 낮음

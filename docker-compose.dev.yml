@@ -1,0 +1,46 @@
+version: '3.8'
+
+# Development environment specific overrides
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./backend/src:/app/backend/src
+      - ./uploads:/app/uploads
+      - ./processed:/app/processed
+    environment:
+      - DEBUG=true
+      - LOG_LEVEL=DEBUG
+    ports:
+      - "8080:8000"
+      - "5678:5678"  # Python debugger port
+
+  admin-ui:
+    volumes:
+      - ./backend/src:/app/backend/src
+      - ./frontend/src:/app/frontend/src
+    environment:
+      - NODE_ENV=development
+      - DEBUG=true
+
+  # Development database with exposed port
+  postgres:
+    ports:
+      - "5432:5432"
+
+  # MinIO with console exposed
+  minio:
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+  # Qdrant with dashboard
+  qdrant:
+    environment:
+      - QDRANT__SERVICE__HTTP_PORT=6333
+      - QDRANT__SERVICE__ENABLE_TLS=false
+    ports:
+      - "6333:6333"
+      - "6334:6334"  # gRPC port

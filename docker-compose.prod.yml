@@ -1,0 +1,88 @@
+version: '3.8'
+
+# Production environment specific overrides
+services:
+  api:
+    restart: always
+    environment:
+      - DEBUG=false
+      - LOG_LEVEL=WARNING
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+        reservations:
+          cpus: '1'
+          memory: 2G
+
+  admin-ui:
+    restart: always
+    environment:
+      - NODE_ENV=production
+
+  vllm:
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 2
+              capabilities: [gpu]
+
+  vllm-embeddings:
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  postgres:
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db_password
+    secrets:
+      - db_password
+
+  qdrant:
+    restart: always
+    volumes:
+      - qdrant-data:/qdrant/storage
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+
+  minio:
+    restart: always
+    volumes:
+      - minio-data:/data
+    environment:
+      - MINIO_ROOT_USER_FILE=/run/secrets/minio_user
+      - MINIO_ROOT_PASSWORD_FILE=/run/secrets/minio_password
+    secrets:
+      - minio_user
+      - minio_password
+
+volumes:
+  postgres-data:
+    driver: local
+  qdrant-data:
+    driver: local
+  minio-data:
+    driver: local
+
+secrets:
+  db_password:
+    external: true
+  minio_user:
+    external: true
+  minio_password:
+    external: true

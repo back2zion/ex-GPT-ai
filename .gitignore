@@ -1,77 +1,221 @@
-# Windows 임시 파일
-~$*
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Office 임시 파일
-~$*.docx
-~$*.doc
-~$*.xlsx
-~$*.xls
-~$*.pptx
-~$*.ppt
+# C extensions
+*.so
 
-# 시스템 파일
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# IDE 파일
-.vscode/
-.idea/
-*.swp
-*.swo
+# PyInstaller
+*.manifest
+*.spec
 
-# 로그 파일
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
 *.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
 
-# 임시 파일
-*.tmp
-*.temp
+# Flask stuff:
+instance/
+.webassets-cache
 
-# 백업 파일
-*.bak
-*.backup
-*_backup.*
+# Scrapy stuff:
+.scrapy
 
-# 복사본 파일
-* copy*
-*_copy*
+# Sphinx documentation
+docs/_build/
 
-# 개인정보 관련 파일
-*password*
-*secret*
-*private*
-*개인정보*
-*비밀*
+# PyBuilder
+.pybuilder/
+target/
 
-# 압축 파일
-*.zip
-*.rar
-*.7z
-*.tar.gz
+# Jupyter Notebook
+.ipynb_checkpoints
 
-# 실행 파일
-*.exe
-*.msi
-*.dmg
+# IPython
+profile_default/
+ipython_config.py
 
-# 데이터베이스 파일
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Data directories
+data/
+uploads/
+processed/
+temp/
+cache/
+logs/
+backups/
+
+# Model files
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.pkl
+*.h5
+
+# Data files
+*.csv
+*.xlsx
+*.xls
 *.db
 *.sqlite
 *.sqlite3
 
-# 환경 설정 파일
-.env
-.env.local
-.env.production admin/
-admin/
-admin/
-data/
-*.log
-*.tmp
+# Image files (except in specific directories)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+!docs/images/*
+!frontend/public/images/*
+
+# PDF files
+*.pdf
+!docs/*.pdf
+
+# Docker volumes
+qdrant_storage/
+minio_data/
+postgres_data/
+redis_data/
+
+# Frontend
 node_modules/
-.env
+frontend/dist/
+frontend/build/
+frontend/.next/
+frontend/out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Secrets and config
+*.key
+*.pem
+*.crt
+.env.local
+.env.production
+config/production.yaml
+config/secrets.yaml

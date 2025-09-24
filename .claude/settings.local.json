@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd /c \"ren \"\"ex-gpt-multimodal-backend\"\" \"\"backend\"\"\")",
+      "Bash(cmd /c \"ren \"\"ex-gpt-user\"\" \"\"frontend\"\"\")",
+      "Bash(powershell:*)",
+      "Bash(dir)",
+      "Bash(uv venv:*)",
+      "Bash(.venvScriptsactivate)",
+      "Bash(uv pip sync:*)",
+      "Bash(.venv\\Scripts\\activate.bat)",
+      "Bash(uv run:*)",
+      "Bash(curl:*)",
+      "Bash(dir:*)",
+      "Bash(uv pip install:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(cmd /c:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(git push:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
