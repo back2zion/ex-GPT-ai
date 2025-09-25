@@ -14,12 +14,10 @@ from dataclasses import dataclass
 from enum import Enum
 import logging
 from transformers import (
-    BlipProcessor, 
-    BlipForConditionalGeneration,
-    CLIPProcessor,
-    CLIPModel,
     AutoProcessor,
-    AutoModelForVision2Seq
+    AutoModelForCausalLM,
+    CLIPProcessor,
+    CLIPModel
 )
 
 # 로깅 설정
@@ -54,7 +52,7 @@ class ImageAnalysisResult:
 class MultimodalVLMProcessor:
     """
     멀티모달 Vision Language Model 처리기
-    BLIP-2와 CLIP을 활용한 이미지-텍스트 통합 처리
+    Microsoft Florence-2와 CLIP을 활용한 이미지-텍스트 통합 처리
     """
     
     def __init__(self, device: str = "cuda"):
@@ -81,15 +79,22 @@ class MultimodalVLMProcessor:
     def _load_models(self):
         """모델 로드 및 초기화"""
         try:
-            # BLIP-2 모델 로드 (캡셔닝용)
-            logger.info("BLIP-2 모델 로드 중...")
-            self.blip_processor = BlipProcessor.from_pretrained(
-                "Salesforce/blip-2-opt-2.7b"
+            # Florence-2 모델 로드 (캡셔닝, 객체 감지, OCR 등)
+            logger.info("Florence-2-base 모델 로드 중...")
+
+            # flash_attn이 없는 경우 우회 로드
+            import os
+            os.environ["FLASH_ATTENTION_INSTALLED"] = "False"
+
+            self.florence_processor = AutoProcessor.from_pretrained(
+                "microsoft/Florence-2-base-ft",  # fine-tuned 버전 사용
+                trust_remote_code=True
             )
-            self.blip_model = BlipForConditionalGeneration.from_pretrained(
-                "Salesforce/blip-2-opt-2.7b",
-                torch_dtype=torch.float16 if self.device == "cuda" else torch.float32,
-                device_map="auto" if self.device == "cuda" else None
+            self.florence_model = AutoModelForCausalLM.from_pretrained(
+                "microsoft/Florence-2-base-ft",
+                torch_dtype=torch.float32,  # CPU에서는 float32 사용
+                trust_remote_code=True,
+                use_safetensors=True
             )
             
             # CLIP 모델 로드 (임베딩용)
@@ -198,26 +203,44 @@ class MultimodalVLMProcessor:
             metadata=metadata
         )
         
-    def generate_caption(self, image: Image.Image) -> str:
+    def generate_caption(self, image: Image.Image, task: str = "<CAPTION>") -> str:
         """
-        BLIP-2를 사용한 이미지 캡션 생성
-        
+        Florence-2를 사용한 이미지 캡션 생성
+
         Args:
             image: PIL Image 객체
-            
+            task: Florence-2 태스크 프롬프트 (기본: <CAPTION>)
+                  옵션: <DETAILED_CAPTION>, <MORE_DETAILED_CAPTION>, <OCR>, <OBJECT_DETECTION>
+
         Returns:
-            생성된 캡션 텍스트
+            생성된 캡션 텍스트 또는 태스크 결과
         """
-        inputs = self.blip_processor(image, return_tensors="pt").to(self.device)
-        
+        inputs = self.florence_processor(text=task, images=image, return_tensors="pt").to(self.device)
+
         with torch.no_grad():
-            generated_ids = self.blip_model.generate(**inputs, max_length=50)
-            
-        caption = self.blip_processor.batch_decode(
-            generated_ids, skip_special_tokens=True
+            generated_ids = self.florence_model.generate(
+                **inputs,
+                max_new_tokens=1024,
+                do_sample=False,
+                num_beams=3
+            )
+
+        generated_text = self.florence_processor.batch_decode(
+            generated_ids, skip_special_tokens=False
         )[0]
-        
-        return caption
+
+        # Florence-2 특수 형식 파싱
+        parsed = self.florence_processor.post_process_generation(
+            generated_text,
+            task=task,
+            image_size=(image.width, image.height)
+        )
+
+        # 태스크별 결과 반환
+        if task in ["<CAPTION>", "<DETAILED_CAPTION>", "<MORE_DETAILED_CAPTION>"]:
+            return parsed.get(task.replace("<", "").replace(">", ""), "")
+        else:
+            return str(parsed)  # OCR이나 객체 감지의 경우 전체 결과 반환
         
     def extract_image_embeddings(self, image: Image.Image) -> np.ndarray:
         """
@@ -277,6 +300,57 @@ class MultimodalVLMProcessor:
         
         return results
         
+    def detect_objects_florence(self, image: Image.Image) -> Dict[str, Any]:
+        """
+        Florence-2를 사용한 객체 감지
+
+        Args:
+            image: PIL Image 객체
+
+        Returns:
+            감지된 객체와 바운딩 박스 정보
+        """
+        result = self.generate_caption(image, task="<OD>")  # Object Detection
+        return eval(result) if isinstance(result, str) else result
+
+    def extract_text_florence(self, image: Image.Image) -> str:
+        """
+        Florence-2를 사용한 OCR
+
+        Args:
+            image: PIL Image 객체
+
+        Returns:
+            추출된 텍스트
+        """
+        return self.generate_caption(image, task="<OCR>")
+
+    def detect_road_damage_florence(self, image: Image.Image) -> Dict[str, Any]:
+        """
+        Florence-2를 사용한 도로 손상 감지 (커스텀 프롬프트)
+
+        Args:
+            image: PIL Image 객체
+
+        Returns:
+            도로 손상 정보
+        """
+        # Florence-2의 <REGION_PROPOSAL> 태스크 사용
+        regions = self.generate_caption(image, task="<REGION_PROPOSAL>")
+
+        # 상세 캡션으로 도로 상태 분석
+        detailed_caption = self.generate_caption(image, task="<MORE_DETAILED_CAPTION>")
+
+        # 도로 손상 키워드 체크
+        damage_keywords = ["crack", "pothole", "damage", "broken", "균열", "포트홀", "파손"]
+        has_damage = any(keyword in detailed_caption.lower() for keyword in damage_keywords)
+
+        return {
+            "has_damage": has_damage,
+            "description": detailed_caption,
+            "regions": regions
+        }
+
     def detect_objects(self, image: Image.Image, image_type: ImageType) -> List[str]:
         """
         이미지 유형별 객체 검출

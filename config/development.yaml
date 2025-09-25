@@ -27,7 +27,7 @@ models:
     endpoint: http://localhost:8101/v1
     name: bge-reranker-v2-m3
   vlm:
-    name: Salesforce/blip-2-opt-2.7b
+    name: microsoft/Florence-2-base
     device: cuda
   ocr:
     engine: easyocr

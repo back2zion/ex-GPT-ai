@@ -102,7 +102,7 @@ class Settings:
             embedding_model_name=os.getenv("EMBEDDING_MODEL_NAME", "Qwen/Qwen3-Embedding-0.6B"),
             rerank_model_endpoint=os.getenv("RERANK_MODEL_ENDPOINT", "http://vllm-rerank:8101/v1"),
             rerank_model_name=os.getenv("RERANK_MODEL_NAME", "BAAI/bge-reranker-v2-m3"),
-            vlm_model_name=os.getenv("VLM_MODEL_NAME", "Salesforce/blip-2-opt-2.7b"),
+            vlm_model_name=os.getenv("VLM_MODEL_NAME", "microsoft/Florence-2-base"),
             ocr_engine=os.getenv("OCR_ENGINE", "easyocr")
         )
         

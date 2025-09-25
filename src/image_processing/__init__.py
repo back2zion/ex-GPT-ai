@@ -10,17 +10,29 @@ from .vlm_processor import (
     ImageAnalysisResult
 )
 
-from .ocr_engine import (
-    KoreanOCREngine,
-    DocumentProcessor,
-    OCRResult
-)
+try:
+    from .ocr_engine import (
+        KoreanOCREngine,
+        DocumentProcessor,
+        OCRResult
+    )
+except ImportError:
+    print("Warning: OCR dependencies not installed")
+    KoreanOCREngine = None
+    DocumentProcessor = None
+    OCRResult = None
 
-from .image_analyzer import (
-    IntegratedImageAnalyzer,
-    ProcessingMode,
-    ComprehensiveImageAnalysis
-)
+try:
+    from .image_analyzer import (
+        IntegratedImageAnalyzer,
+        ProcessingMode,
+        ComprehensiveImageAnalysis
+    )
+except ImportError:
+    print("Warning: Image analyzer dependencies not installed")
+    IntegratedImageAnalyzer = None
+    ProcessingMode = None
+    ComprehensiveImageAnalysis = None
 
 __all__ = [
     'MultimodalVLMProcessor',
